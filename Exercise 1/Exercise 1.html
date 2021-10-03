@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Exercise 1.css">
+  <title>Exercise 1</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="application"></div>
+
+  <script type="text/babel">
+
+    const LuetuimmatItem = props => {
+      return <div className="LuetuinItem">
+          <div className="LuetuinNumero">
+            { props.id }
+          </div>
+          <div className="LuetuinText">
+            <span id="LuetuinTitle"> { props.title + ' | ' }  </span>
+            {  props.text }
+          </div>
+        </div>
+    };
+
+    const LuetuimmatList = props => {
+      return <div className="LuetuinLoota"> 
+        { props.LuetuimmatData.map(i => <LuetuimmatItem {...i} key={ i.id }/>) }
+      </div>
+    };
+
+
+    const LuetuinTitle = props => {
+      return <div>
+        <h2 id='LuetuinMainTitle'> Luetuimmat </h2>
+        <hr className = "divider" />
+      </div>
+    };
+
+    const Luetuimmat = props => {
+      const LuetuimmatData = [
+        { id: 1, title: 'Rikosepäilyt', text: 'EIT-huijaus: Kuolleeksi väitetyn irakilaismiehen tytär valehteli perheen taustoista jo turvapaikkahakemusessa'},
+        { id: 2, title: 'HS Vantaa', text: 'Vantaalle nousi vankilan näköinen päiväkoti, jota pilkataan nyt surutta verkossa'},
+        { id: 3, title: 'Päivittyvä seuranta', text: 'STM: Parasetamolia tai deksametasonia sisältävien lääkkeiden myyntiä rajoitetaan - Ministeriö haluaa varmistaa valmisteiden riittävyyden'},
+        { id: 4, title: 'Nyt.fi', text: 'Harry Styles puki ylleen suomalaisen suunnittelijan neuleen, nyt tätä "mummon tilkkutäkkiä neulovat kymmenet tuhannet ympäri maailman - Soitimme vaatesuunnittelijalle'},
+        { id: 5, title: 'Rikosepäilyt', text: 'Atte Jääskeläinen sai syytteet liikenneturvallisuuden vaarantamisesta ja vammantuottamuksesta - "Olen myöntänyt syyllisyyteni"'},
+        { id: 6, title: 'Helsinki', text: 'Työryhmän ehdotus julki: Jättimäisestä hiilivoimalasta halutaan täysin uudenlainen tapahtumapaikka kaupungin asukkaille'}
+      ];
+
+      return <div className='Luetuimmat'>
+          <LuetuinTitle />
+          <LuetuimmatList LuetuimmatData={ LuetuimmatData } />
+        </div>
+    };
+
+    const NavBar = props => {
+      return <div className="NavBar">
+        <div className="HSTitle"> HELSINGIN SANOMAT </div>
+        <div className="NavItem"> Etusivu</div>
+        <div className="NavItem"> Uutiset</div>
+        <div className="NavItem"> Lehdet</div>
+        <div className="NavItem"> Asiakaspalvelu</div>
+        <div className="TilaaButton"> Tilaa</div>
+        <div className="NavItem"> Kirjaudu</div>
+        <div className="ValikkoButton"> Valikko</div>
+      </div>
+    };
+
+    const Highlights = props => {
+      return <div className="Highlights">
+            <div className="Päiväntimantti Highlightbox"> PÄIVÄN TIMANTTI: Tutkija kertoo: Näin sota näkyy meissä edelleen</div>
+            <div className="Päiväntimantti Highlightbox"> PÄIVÄN TIMANTTI: Harriet Rabb tajusi avioliiton taloudelliset hyödyt ja kosi - Näin hän säästäisi aviopuolisona 19 200 euroa</div>
+            <div className="Mainos Highlightbox"> MAINOS: Faktoille on nyt suurempi tarve kuin koskaan - Tutustu Hesariin 2 viikkoa maksutta!</div>
+        </div>
+    };
+
+    const News = props => {
+      return <div className="NewsWindow">
+        <BigNews/>
+        <Luetuimmat/>
+        </div>
+    };
+
+    const BigNews = props => {
+      return <div className="MainNews"> 
+        <h2 id="Newstitle"> Koronavirus </h2>
+        <div className = "Picture"></div>
+        <div className = "seuraus"> HS seuraa </div>
+        <div className = "SubTitle"> <span className="bluetext">Päivittyvä seuranta |</span> STM: Parasetamolia tai deksametasonia sisältävien lääkkeiden myyntiä rajoitetaan</div>
+        <div className = "Koronaeffect"> Koronaviruksen vaikutukset Suomessa</div>
+        <div className = "Statistics">
+          <div className = "StatisticsColumn">
+            <div className="StatsText">
+              Tartunnat <br/> yhteensä
+            </div>
+            <div className="StatsNumber">
+              7776
+            </div>
+            <div className="StatsText">
+              Kuolleet
+            </div>
+            <div className="StatsNumber">
+              334
+            </div>
+            <div className="StatsText">
+              Sairaalahoidossa
+            </div>
+            <div className="StatsNumber yellowtext">
+              5
+            </div>
+          </div>
+          <div className = "StatisticsColumn">
+            <div className="StatsText rightist">
+              Tuoreimmat <br/> 14 päivää
+            </div>
+            <div className="StatsNumber rightist">
+              293
+            </div>
+            <div className="StatsText">
+              &nbsp;
+            </div>
+            <div className="StatsNumber rightist">
+              5
+            </div>
+          </div>
+          <div className = "StatisticsColumn">
+            <div className="StatsText rightist">
+              Edeltävät <br/> 14 päivää
+            </div>
+            <div className="StatsNumber rightist">
+              132
+            </div>
+            <div className="StatsText">
+              &nbsp;
+            </div>
+            <div className="StatsNumber rightist">
+              1
+            </div>
+          </div>
+        </div>
+      </div>
+    };
+
+
+    const App = props => {
+      return <div className='Body'>
+          <NavBar />
+          <Highlights />  
+          <News />
+        </div>
+    };
+      
+    ReactDOM.render(
+      <App/>,
+      document.getElementById('application')
+    );
+  </script>
+</body>
+</html>
